@@ -1,0 +1,14 @@
+class Solution {
+    public int firstUniqChar(String s) {
+        // here we use s.index and s.lastindex and if value of index and lastindex are not same it means that alphabet is repeated
+        // initialize result variable with max value
+        int result = Integer.MAX_VALUE;
+        for(char c='a';c<='z';c++){
+            int index = s.indexOf(c);
+            if(index!=-1 && index==s.lastIndexOf(c)){
+                result = Math.min(result,index);
+            }
+        }
+        return result == Integer.MAX_VALUE?-1:result;
+    }
+}
