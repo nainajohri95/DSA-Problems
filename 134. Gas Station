@@ -1,0 +1,22 @@
+class Solution {
+    public int canCompleteCircuit(int[] gas, int[] cost) {
+        // GAS :- amount of gas we have
+        // COST:- amount of gas we need
+        //clockwise : - traversal from left to rightl
+       
+        int pos = -1, curr = 0, total = 0;   // when we can't start from any pos we have to return-1
+        for(int i=0; i<gas.length; i++){
+           int diff = gas[i] - cost[i];
+            curr += diff;
+            total += diff;
+            if(curr < 0){
+                curr = 0;
+                pos = i;
+            }
+        }
+        if(total >= 0){
+            return pos+1;
+        }
+     return -1;   
+    }
+}
