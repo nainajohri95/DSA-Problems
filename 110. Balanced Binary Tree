@@ -1,0 +1,21 @@
+class Solution {
+    private boolean result = true;
+        //input :- root of binary tree
+        //DS use in input :- array/BT
+        //abs :- absolute fun (if value tends to -ve)
+        public boolean isBalanced(TreeNode root){
+            validate(root);
+            return result;
+        }
+        public int validate(TreeNode root){
+            if(root == null)
+                return 0;
+            int l = validate(root.left);
+            int r = validate(root.right);
+            if(Math.abs(l-r)  > 1)
+                result = false;
+            return l + Math.max(l,r);
+        }
+        
+    
+}
