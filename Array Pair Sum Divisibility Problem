@@ -1,0 +1,37 @@
+class Solution {
+    public boolean canPair(int[] nums, int k) {
+        int n = nums.length;
+        if (n % 2 != 0) {
+            // If the array length is not even, it cannot be paired.
+            return false;
+        }
+
+        for (int i=0; i<n; i++) {
+            nums[i] = (nums[i] % k + k) % k; // checking that  the remainder is non-negative.
+        }
+
+        // Count the frequency of remainders in the array.
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int num : nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+
+        // Check the conditions for valid pairs.
+        for (int remainder : map.keySet()) {
+            if (remainder == 0) {
+                // If remainder is 0, the frequency should be even.
+                if (map.get(remainder) % 2 != 0) {
+                    return false;
+                }
+            } 
+            else {
+                int temp = (k - remainder + k) % k; // Ensure that the complement is non-negative
+                if (!map.containsKey(complement) || 
+                    map.get(remainder) != map.get(complement)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+}
