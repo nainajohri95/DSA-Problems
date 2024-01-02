@@ -1,0 +1,17 @@
+class Solution {
+    public List<List<Integer>> findMatrix(int[] nums) {
+        int n = nums.length;
+        ArrayList<List<Integer>> result = new ArrayList<>();
+        int ans[] = new int[n+1];
+
+        for(int i: nums){
+            int freq = ans[i];
+            if(freq == result.size()){
+                result.add(new ArrayList<>()); // if frequency of an ele is greater then1 then we will add one more row in matrix.
+            }
+            result.get(freq).add(i); //add the ele to the row eqauls to its frequncy
+            ans[i]++; //increasing the frequency
+        }
+        return result;
+    }
+}
