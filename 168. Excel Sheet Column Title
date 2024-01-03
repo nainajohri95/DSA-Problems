@@ -1,0 +1,17 @@
+class Solution {
+    public String convertToTitle(int columnNumber) {
+        StringBuilder res = new StringBuilder();
+
+        while(columnNumber > 0){
+            columnNumber--;
+
+            //get current character by doing modulo of columnNumber by 26
+            char ch = (char) (columnNumber % 26 + 'A');
+            columnNumber /= 26;
+            res.append(ch);
+        }
+        // reverse the o/p bcz we have found characters from right to left
+        res.reverse();
+        return res.toString();
+    }
+}
