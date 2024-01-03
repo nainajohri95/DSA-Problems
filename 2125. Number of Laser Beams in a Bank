@@ -1,0 +1,29 @@
+class Solution {
+    public int numberOfBeams(String[] bank) {
+        int n = bank.length;
+        int prev = 0; // device in previous row
+        int result = 0;
+
+        for(int i=0; i<n; i++){
+            int curr = 0; // device in current row
+
+            for(char ch : bank[i].toCharArray()){
+                if(ch == '1'){
+                    curr++;
+                }
+            }
+            result += (curr * prev);
+
+            if(curr != 0){ //only if there is device in current row then only the no. of devices in currRow will be equal to curr otherqise it will be eqaul to no. of devices in prevRow (prev).
+                prev = curr;
+            }
+
+        }
+        return result;
+
+    }
+}
+
+        //if in a row no device founf then currdevice = devices in a previous row
+
+//For each row i where r1 < i < r2, there are no security devices in the ith row.this means if there is no device b/w 2 diff rows then one divice in row can paas leaser beam to another row device. like if row0  having 3 device, row1 have no device and row2 have 2 device then beam can be passed from 3devices of row0 to 2 devices of row2. therefore 3*2 = 6 leaser beams
