@@ -1,0 +1,20 @@
+class Solution {
+    public int minOperations(int[] nums) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int count = 0;
+
+        for (int n : nums) {
+            map.put(n, map.getOrDefault(n, 0) + 1);
+        }
+
+        for (int val : map.values()) {
+            if (val == 1) {
+                return -1;
+            }
+
+            count += val / 3 + (val % 3 != 0 ? 1 : 0);
+        }
+
+        return count;
+    }
+}
