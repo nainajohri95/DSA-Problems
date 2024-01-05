@@ -1,0 +1,36 @@
+class Solution {
+    public int lengthOfLIS(int[] nums) {
+        int n = nums.length;
+        ArrayList<Integer> list = new ArrayList<>();
+
+        for (int i = 0; i < n; i++) {
+            // finding just greater than or equal to nums[i].
+            int idx = binarySearch(list, nums[i]);
+
+            if (idx == list.size()) {
+                list.add(nums[i]); //if greater than insert it in list
+            } else {
+                list.set(idx, nums[i]); //replace with nums[i]
+            }
+        }
+
+        return list.size();
+    }
+
+    // by doing BinarSearch we can finding just greater than or equal to nums[i].
+    private int binarySearch(List<Integer> list, int target) {
+        int low = 0;
+        int high = list.size();
+
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+            if (list.get(mid) < target) {
+                low = mid + 1;
+            } else {
+                high = mid;
+            }
+        }
+
+        return low;
+    }
+}
