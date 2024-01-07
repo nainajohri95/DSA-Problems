@@ -1,0 +1,22 @@
+class Solution {
+    public int numberOfArithmeticSlices(int[] nums) {
+        int n = nums.length;
+        int res = 0;
+
+        // Creating an array of type Map
+        Map<Long, Integer>[] mp = new HashMap[n];
+
+        for (int i = 0; i < n; i++) {
+            mp[i] = new HashMap<>();
+            for (int j = 0; j < i; j++) {
+                long diff = (long) nums[i] - nums[j];
+
+                Integer countAtJ = mp[j].get(diff);
+                int count_at_j = (countAtJ == null) ? 0 : countAtJ; // count at j for difference = diff
+                mp[i].put(diff, mp[i].getOrDefault(diff, 0) + count_at_j + 1);
+                res += count_at_j;
+            }
+        }
+        return res;
+    }
+}
