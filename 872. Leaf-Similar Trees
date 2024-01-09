@@ -1,0 +1,24 @@
+class Solution {
+    public boolean leafSimilar(TreeNode root1, TreeNode root2) {
+        ArrayList<Integer> list1 =  new ArrayList<>();
+        ArrayList<Integer> list2 = new ArrayList<>();
+         list1 = findLeafNodes(root1,list1);
+         list2 = findLeafNodes(root2,list2);
+
+         return list1.equals(list2);
+    }
+
+    public static ArrayList<Integer> findLeafNodes(TreeNode root, ArrayList<Integer> leaf){
+        if(root == null){
+            return null;
+        }
+
+        if(root.left == null && root.right == null){
+            leaf.add(root.val);
+        }
+        findLeafNodes(root.left,leaf);
+        findLeafNodes(root.right,leaf);
+
+        return leaf;
+    }
+}
