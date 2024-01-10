@@ -1,0 +1,24 @@
+class Solution {
+    public int subarraysDivByK(int[] nums, int k) {
+       // Initialize a HashMap to store the frequency of remainders
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(0,1);
+
+        int sum=0;
+        int count=0;
+
+        for(int num: nums){
+            sum += num; //updating the cumulative sum
+
+            // Calculate the remainder when dividing the cumulative sum by k
+            int remainder = (sum % k + k) % k;
+
+             // Update the count by adding the frequency of the current remainder
+            count += map.getOrDefault(remainder, 0);
+
+            // Update the HashMap with the current remainder's frequency
+            map.put(remainder, map.getOrDefault(remainder, 0) + 1);
+        }
+        return count;
+    }
+}
