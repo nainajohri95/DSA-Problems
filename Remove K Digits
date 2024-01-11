@@ -1,0 +1,47 @@
+
+
+// User function Template for Java
+
+class Solution {
+    public String removeKdigits(String S, int K) {
+        // code here
+        int n = S.length();
+        
+        Stack<Character>st = new Stack<>();
+        
+        for(char ch: S.toCharArray()){
+    // Remove larger digits from the stack until a smaller digit or K removals are reached
+            while(!st.isEmpty() && K>0 && st.peek() > ch){
+                st.pop();
+                K--;
+            }
+            // Push the current digit in stack
+            st.push(ch);
+        }
+        
+        // If there are still removals remaining, pop digits from the stack
+        while (K > 0) {
+            st.pop();
+            K--;
+        }
+        
+        // Build the result 
+        StringBuilder result = new StringBuilder();
+        while (!st.isEmpty()) {
+            result.insert(0, st.pop());
+        }
+        
+        //Removal of leading 0
+        int startIndex = 0;
+        while (startIndex < result.length() && result.charAt(startIndex) == '0') {
+            startIndex++;
+        }
+        
+        // If the result is empty after removing leading zeros, return "0"
+        return (startIndex == result.length()) ? "0" : result.substring(startIndex);
+    }
+}
+// here we will use the logic that we try to make the string ele in ascending order and if any of the prev ele > next ele then we remove the prev ele
+// like in 149811 1<4<9 but 8<9 and we want somting grater then 9 so we remove 9 again do same 1<4<9 but 1<9 so remove 9, again 1<4  but 1<4 so remove 4
+// hence we have remove 3 ele 4,9 and 8 so the ans is 111
+// also remove trailing 0.
