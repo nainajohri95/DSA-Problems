@@ -1,0 +1,30 @@
+class Solution {
+    public boolean halvesAreAlike(String s) {
+        String s1 = "";
+        String s2 = "";
+        int n = s.length();
+        int count1 = 0;
+        int count2 = 0;
+
+        for(int i=0; i<n/2; i++){
+            s1 += s.charAt(i);
+        }
+
+        for(int j =n/2 ; j<n; j++){
+               s2 += s.charAt(j);
+        }
+
+        for(char ch1: s1.toCharArray()){
+            if(ch1 == 'a' || ch1 == 'e'|| ch1 == 'i'|| ch1 == 'o' || ch1 == 'u'|| ch1 == 'A' || ch1 == 'E' || ch1 == 'I' || ch1 == 'O' || ch1 == 'U'){
+                count1++;
+            }
+        }
+
+        for(char ch2: s2.toCharArray()){
+            if(ch2 == 'a' || ch2 == 'e'|| ch2 == 'i'|| ch2 == 'o'|| ch2 == 'u'|| ch2 == 'A' || ch2 == 'E' || ch2 == 'I' || ch2 == 'O' || ch2 == 'U'){
+                count2++;
+            }
+        }
+        return count1 == count2;
+    }
+}
