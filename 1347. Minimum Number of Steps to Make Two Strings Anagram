@@ -1,0 +1,22 @@
+class Solution {
+    public int minSteps(String s, String t) {
+        int countS[] = new int[26];
+        int countT[] = new int[26];
+        int count = 0;
+
+        for(char ch : s.toCharArray()){
+            countS[ch - 'a']++; // get the value of current character in s
+        }
+        for(char ch : t.toCharArray()){
+            countT[ch - 'a']++;  // get the value of current character in t
+        }
+
+        for(int i=0; i<26; i++){
+            count += Math.abs(countS[i] - countT[i]);
+        }
+        return count/2;
+    }
+}
+
+// When we count the total number of differences (count), we are counting the total number of actions needed. However, since each difference involves two actions,
+//we divide the total number of actions by 2 to get the minimum number of steps required to make t an anagram of s.
