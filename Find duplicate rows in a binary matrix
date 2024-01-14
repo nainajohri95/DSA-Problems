@@ -1,0 +1,23 @@
+class Solution
+{
+    public static ArrayList<Integer> repeatedRows(int matrix[][], int m, int n)
+    {
+        //code here
+        int k = matrix.length;
+        int arr[];
+        ArrayList<Integer>list = new ArrayList<>();
+        for(int i=0; i<k; i++){
+            arr = matrix[i]; //consist the 0th rows all values
+            
+            for(int j=i+1; j<k; j++){
+                if(Arrays.equals(arr,matrix[j])){
+                    if(!list.contains(j)){
+                        list.add(j);
+                    }
+                }
+            }
+        }
+        Collections.sort(list);
+        return list;
+    }
+}
