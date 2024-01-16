@@ -1,0 +1,15 @@
+class Solution {
+    public int help(int i, int j, int m, int n) {
+        if (j == n) return 1;
+        if (i > m) return 0;
+
+        int pick = help(i * 2, j + 1, m, n);
+        int notPick = help(i + 1, j, m, n);
+
+        return pick + notPick;
+    }
+
+    public int numberSequence(int m, int n) {
+        return help(1, 0, m, n);
+    }
+}
