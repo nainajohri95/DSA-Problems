@@ -15,7 +15,5 @@ class Solution {
             if(Math.abs(l-r)  > 1)
                 result = false;
             return l + Math.max(l,r);
-        }
-        
-    
+        }           
 }
