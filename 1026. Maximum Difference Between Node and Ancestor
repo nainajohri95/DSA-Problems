@@ -18,7 +18,6 @@ class Solution {
 
     void findMaxDiffUtil(TreeNode root, TreeNode child){ //fun to update the maxDiff
         if(root == null || child == null) return;
-
         maxDiff = Math.max(maxDiff, Math.abs(root.val-child.val));
 
     //to find diff for right and left of childs
