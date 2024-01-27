@@ -1,0 +1,31 @@
+class Solution {
+    public String[] findWords(String[] words) {
+        String s1 = "qwertyuiopQWERTYUIOP";
+        String s2 = "asdfghjklASDFGHJKL";
+        String s3 = "zxcvbnmZXCVBNM"; 
+        int n = words.length;
+
+        ArrayList<String> list = new ArrayList<>();
+        for(int i=0; i<n; i++){
+            int count1 = 0, count2 = 0, count3 = 0, len = words[i].length(); 
+            for(int j=0; j<len; j++){
+                
+                //checking is the charater in each wrods array is present in s1 or s2 or s3
+                if(s1.contains(Character.toString(words[i].charAt(j)))) 
+                    count1++;
+                
+                else if(s2.contains(Character.toString(words[i].charAt(j))))
+                    count2++;
+                
+                else if(s3.contains(Character.toString(words[i].charAt(j))))
+                    count3++;
+
+                if(count1 == len || count2 == len || count3 == len)
+                    list.add(words[i]);
+            }
+        }
+        String res[] = new String[list.size()];
+        list.toArray(res);
+        return res;
+    }
+}
