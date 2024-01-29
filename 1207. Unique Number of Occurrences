@@ -6,7 +6,7 @@ class Solution {
             map.put(arr[i], map.getOrDefault(arr[i],0)+1);
         }
 
-         // Check if the counts are unique using a set
+        // Check if the counts are unique using a set
         HashSet<Integer> set = new HashSet<>(map.values());
 
         return map.size() == set.size();
