@@ -1,0 +1,21 @@
+/**
+ * @param {string} word
+ * @return {string}
+ */
+var compressedString = function(word) {
+    let n = word.length;
+    let comp = ""
+    let i = 0
+
+    while(i < n){
+        let count = 0;
+        let ch = word[i]
+
+        while(i < n && count < 9 && word[i] == ch){
+            count ++
+            i++
+        }
+        comp += count+ch;
+    } 
+    return comp;
+};
